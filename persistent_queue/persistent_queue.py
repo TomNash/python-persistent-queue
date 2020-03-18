@@ -468,3 +468,14 @@ class PersistentQueue:
         Get size of queue.
         """
         return self._length
+
+    def __iter__(self):
+        """
+        Create iterator for queue.
+        """
+        items = self.peek(self.length)
+        try:
+            for i in items:
+                yield i
+        except TypeError:
+            yield items
